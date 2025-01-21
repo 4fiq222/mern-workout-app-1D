@@ -11,7 +11,9 @@ const Home = () => {
   useEffect(() => {
     const fetchWorkouts = async () => {
       const response = await fetch('/api/workouts')
-      const json = await response.json()
+      const json = await response.json(
+        `${process.env.REACT_APP_API_URL}/api/workouts/`
+      );
 
       if (response.ok) {
         dispatch({type: 'SET_WORKOUTS', payload: json})
